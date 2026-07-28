@@ -1,10 +1,11 @@
 # Network Troubleshooting Foundations
 
-This repository documents hands-on network troubleshooting concepts, tools, and scenarios based on the **OSI model**, with practical examples using **Linux** and **Windows** systems.  
+Network Troubleshooting Foundations is a collection of practical networking notes, troubleshooting workflows, and diagnostic command examples developed while refreshing and expanding enterprise networking skills.
 
-The focus is on **diagnostic thinking, safe investigation techniques, and root-cause analysis**, rather than offensive security or penetration testing.
+The repository focuses on systematic network troubleshooting using standard Windows and Linux tools, packet capture fundamentals, and representative real-world troubleshooting scenarios. Rather than serving as a networking reference, the emphasis is on diagnostic methodology, interpreting results, and identifying root causes.
 
-The material is intended to support learning and demonstration of skills relevant to:
+The material is intended to demonstrate knowledge applicable to the following:
+
 - Systems Administration
 - Support Engineering
 - Cloud & Infrastructure Support
@@ -13,16 +14,15 @@ The material is intended to support learning and demonstration of skills relevan
 
 ---
 
-## Scope and Philosophy
+## Scope
 
-This repository emphasizes:
-- Structured troubleshooting using the **OSI model**
-- Practical use of **standard diagnostic tools**
-- Interpretation of results (not just command execution)
+This repository emphasizes the following:
+
+- Structured troubleshooting using the OSI model
+- Practical use of standard diagnostic tools
+- Interpretation of diagnostic results rather than simply executing commands
 - Production-safe investigation techniques
-- Clear documentation and reproducibility
-
-The examples intentionally mirror **real-world enterprise environments**, rather than isolated or artificial lab setups.
+- Clear documentation and reproducible troubleshooting workflows
 
 ---
 
@@ -31,19 +31,35 @@ The examples intentionally mirror **real-world enterprise environments**, rather
 The following lab systems are used throughout this repository:
 
 - **Rocky Linux** (RHEL-compatible)  
-  Used to represent a typical enterprise or cloud-hosted Linux system.  
-  Tools demonstrated are applicable to most modern Linux distributions.
+ A RHEL-compatible Linux distribution representing a typical enterprise or cloud-hosted Linux server.
+Tools and concepts demonstrated are generally applicable to modern Linux distributions.
 
 - **Windows 11 Pro** (domain-joined, hybrid AD–Entra environment)  
-  Used to demonstrate Windows networking and PowerShell-based diagnostics in an enterprise client context.
+A domain-joined workstation integrated with a hybrid Active Directory and Microsoft Entra ID environment.
+Examples demonstrate Windows networking diagnostics using PowerShell and built-in networking tools commonly available in enterprise environments.
 
-> Network diagnostics are intentionally performed across different system roles to reflect real-world environments where clients, servers, and services operate in different trust and identity contexts.
+Unless otherwise noted, all demonstrations are performed in isolated lab environments.
 
----
+## Troubleshooting Methodology
 
-## OSI Model Overview (Brief)
+The examples follow a layered troubleshooting approach based on the Open Systems Interconnection (OSI) model.
 
-The **OSI (Open Systems Interconnection) model** provides a conceptual framework for understanding how network communication occurs across layered components.
+Rather than memorizing commands, the objective is to develop a repeatable diagnostic process that progressively isolates failures and identifies their underlying causes.
+
+Typical troubleshooting activities include:
+
+- Verifying network connectivity
+- Testing DNS resolution
+- Validating routing
+- Confirming service availability
+- Inspecting listening ports
+- Capturing and analyzing network traffic
+- Interpreting diagnostic output
+- Documenting findings and resolution steps
+
+## OSI Model Overview
+
+The **OSI (Open Systems Interconnection) model** provides a conceptual framework for understanding how network communication occurs across layered components. Throughout this repository it serves as a practical troubleshooting guide for narrowing the scope of an issue.
 
 | Layer | Name | Example Focus |
 |-----|------|---------------|
@@ -55,38 +71,42 @@ The **OSI (Open Systems Interconnection) model** provides a conceptual framework
 | 2 | Data Link | MAC addressing, switching |
 | 1 | Physical | Cabling, interfaces |
 
-In practice, the OSI model is used here as a **troubleshooting heuristic**, helping narrow down where failures are likely occurring.
-
 ---
 
 ## Repository Structure
-<PRE>
-network-troubleshooting-foundations/
-├── README.md
-├── osi-model/
-│ ├── osi-overview.md
-│ └── osi-troubleshooting-examples.md
-├── linux-tools/
-│ ├── ping-traceroute.md
-│ ├── ss-netstat.md
-│ ├── dig-nslookup.md
-│ ├── curl-wget.md
-│ ├── tcpdump-basics.md
-│ └── firewall-considerations.md
-├── windows-powershell/
-│ ├── test-netconnection.md
-│ ├── resolve-dnsname.md
-│ ├── get-nettcpconnection.md
-│ ├── netsh-examples.md
-│ └── common-scenarios.md
-├── wireshark/
-│ ├── capture-basics.md
-│ └── reading-packets.md
-└── real-world-scenarios/
-├── api-timeout.md
-├── dns-resolution-failure.md
-└── service-not-listening.md
-</PRE>
+
+```text
+01-network-fundamentals/
+    osi-model.md
+    tcp-ip-basics.md
+    common-ports.md
+
+02-linux-tools/
+    ping-traceroute.md
+    dig-nslookup.md
+    ss-netstat.md
+    curl-wget.md
+    tcpdump-basics.md
+
+03-windows-tools/
+    test-netconnection.md
+    resolve-dnsname.md
+    get-nettcpconnection.md
+    netsh-examples.md
+
+04-packet-analysis/
+    wireshark-basics.md
+    reading-packets.md
+
+05-troubleshooting-workflow/
+    layered-troubleshooting.md
+    common-checklist.md
+
+06-real-world-scenarios/
+    dns-resolution-failure.md
+    service-not-listening.md
+    api-timeout.md
+```
 
 Each section includes:
 - Command examples
@@ -100,15 +120,16 @@ Each section includes:
 ## Tools Covered (Non-Exhaustive)
 
 ### Linux
-- `ip`
-- `ss`
-- `ping`
-- `traceroute`
-- `dig` / `nslookup`
-- `curl` / `wget`
-- `tcpdump`
-- `nmap` (limited to safe discovery usage)
-- `firewalld` / `nftables` considerations
+
+- `curl` / `wget`  
+- `dig / `nslookup`  
+- `firewalld` / `nftables`  
+- `ip`  
+- `nmap` (safe discovery only)  
+- `ping`  
+- `ss`  
+- `tcpdump`  
+- `traceroute`  
 
 ### Windows (PowerShell)
 - `Test-NetConnection`
@@ -116,7 +137,7 @@ Each section includes:
 - `Get-NetTCPConnection`
 - `Get-NetIPConfiguration`
 - `netsh`
-- Windows Defender Firewall tools
+- Windows Defender Firewall with Advanced Security
 
 ---
 
@@ -136,7 +157,7 @@ Screenshots are used to **support explanation**, not as a substitute for analysi
 This repository does **not** include:
 - Offensive security techniques
 - Exploitation workflows
-- Unauthorized scanning
+- Aggressive or unauthorized scanning
 - Penetration testing scenarios
 
 All examples are performed in **controlled lab environments** and focus on **observation, validation, and troubleshooting**.
@@ -148,7 +169,6 @@ All examples are performed in **controlled lab environments** and focus on **obs
 The following open and widely accepted references are used throughout this repository:
 
 - ISO/IEC 7498-1 — OSI Reference Model  
-- https://en.wikipedia.org/wiki/OSI_model
 - https://www.cloudflare.com/learning/network-layer/what-is-the-osi-model/
 - https://learn.microsoft.com/en-us/windows-server/networking/
 - https://man7.org/linux/man-pages/
