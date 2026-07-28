@@ -42,32 +42,51 @@ Rather than treating the OSI model as a list of protocols to memorize, this repo
 
 In real-world troubleshooting, multiple layers are often involved at once. Tools commonly span more than one layer.
 
-
-
-
 ---
 
-## Encapsulation and De-Encapsulation (Conceptual)
+## Encapsulation and De-Encapsulation Concepts
 
-When data is sent from one device to another:
-1. Application data is generated at Layer 7.
-2. Each lower layer **encapsulates** the data with its own header.
-3. The final bit stream is transmitted over the physical medium.
-4. The receiving system **de-encapsulates** the data layer by layer.
+When data is transmitted between two systems, it passes through multiple layers of the networking stack.
 
-Understanding encapsulation helps explain the following:
-- Why packet captures show multiple headers.
-- Why transport means (TCP/UDP) matter for applications.
-- Why tools at different layers expose different information.
+During transmission:
 
-A visual illustration of this process is commonly shown in OSI encapsulation diagrams referenced from open educational sources.  
-One such example is available from GeeksforGeeks:  https://www.geeksforgeeks.org/open-systems-interconnection-model-osi/
+1. An application generates data. 
+2. As the data moves down the networking stack, each layer adds its own protocol information (encapsulation). 
+3. The completed Ethernet frame is transmitted across the physical network as a stream of bits. 
+4. The receiving system removes the protocol information one layer at a time (de-encapsulation) until the original application data is delivered. 
+
+```
+Application Data
+        │
+        ▼
++----------------------+
+| TCP Header           |
++----------------------+
+| IP Header            |
++----------------------+
+| Ethernet Header      |
++----------------------+
+| Application Data     |
++----------------------+
+        │
+        ▼
+Bits transmitted over the physical medium
+```
+
+Understanding encapsulation helps explain:
+
+- Why packet captures display multiple protocol headers.
+- Why TCP and UDP provide transport services for higher-layer applications.
+- Why diagnostic tools expose different information depending on the layer being examined.
+  
+The following example follows an HTTPS request from a web browser through each OSI layer to illustrate how these concepts apply during real network communication.
 
 ---
 
 ## OSI Layers Walkthrough
 
 Let's look at an example of a user accessing their Gmail, and what troubleshooting could be done.
+
 
 ### Layer 7 – Application
 
@@ -156,29 +175,17 @@ Although users experience the problem as "Gmail won't load," the underlying caus
 
 | Layer | Typical Tools | 
 |-----|------|
-| 7	| curl, wget, browser developer tools |
-| 6	| openssl, browser certificate viewer |
+| 7	| `curl`, `wget`, browser developer tools |
+| 6	| `openssl`, browser certificate viewer |
 | 5	| Wireshark |
-| 4	| ss, netstat, Test-NetConnection |
-| 3	| ping, traceroute, ip, Resolve-DnsName, dig | 
-| 2	| ip neigh, arp, Wireshark |
-| 1	| ethtool, ip link, NIC status | 
+| 4	| `ss`, `netstat`, `Test-NetConnection` |
+| 3	| `ping`, `traceroute`, `ip`, `Resolve-DnsName`, `dig` | 
+| 2	| `ip neigh`, `arp`, Wireshark |
+| 1	| `ethtool`, `ip link`, NIC status | 
 
 
 ---
 
-## Using the OSI Model in This Repository
-
-Each tool and scenario in this repository is mapped (implicitly or explicitly) to one or more OSI layers.  
-The goal is not to force an exact classification, but to show how **layered thinking improves troubleshooting efficiency**.
-
-Examples:
-- `ping` → primarily Layer 3
-- `ss` / `netstat` → Layers 4–5
-- `curl` → Layers 4–7
-- `tcpdump` / Wireshark → Layers 2–7 (observation)
-
----
 
 ## References
 
