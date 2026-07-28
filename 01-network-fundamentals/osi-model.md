@@ -69,7 +69,7 @@ One such example is available from GeeksforGeeks:  https://www.geeksforgeeks.org
 
 Let's look at an example of a user accessing their Gmail, and what troubleshooting could be done.
 
-# Layer 7 – Application
+### Layer 7 – Application
 
 The user opens Google Chrome and enters:
 `https://mail.google.com`
@@ -82,7 +82,7 @@ Possible troubleshooting questions:
 - Does another browser work?
 - Is the URL correct?
 
-# Layer 6 – Presentation
+### Layer 6 – Presentation
 
 The browser negotiates encryption using TLS.
 Certificates are exchanged and validated before encrypted communication begins.
@@ -93,7 +93,7 @@ Possible troubleshooting questions:
 - Is the system clock correct?
 - Is TLS negotiation failing?
 
-# Layer 5 – Session
+### Layer 5 – Session
 
 A secure communication session is established between the browser and Google's servers.
 
@@ -102,7 +102,7 @@ Possible troubleshooting questions:
 - Does the connection remain established?
 - Are repeated reconnects occurring?
 
-# Layer 4 – Transport
+### Layer 4 – Transport
 
 TCP establishes a connection using the three-way handshake.
 ```
@@ -118,7 +118,7 @@ Is port 443 reachable?
 Is a firewall blocking the connection?
 Are packets being retransmitted?
 
-# Layer 3 – Network
+### Layer 3 – Network
 
 DNS resolves the hostname to an IP address.
 
@@ -130,7 +130,7 @@ Possible troubleshooting questions:
 - Is the default gateway reachable?
 - Is routing correct?
 
-# Layer 2 – Data Link
+### Layer 2 – Data Link
 
 Frames are delivered across the local network using MAC addresses.
 
@@ -142,7 +142,7 @@ Possible troubleshooting questions:
 - Is the switch forwarding frames?
 - Is the correct VLAN configured?
 
-# Layer 1 – Physical
+### Layer 1 – Physical
 
 Electrical signals, fiber optics, or Wi-Fi radio transmit the bits.
 
@@ -154,6 +154,15 @@ Possible troubleshooting questions:
 
 Although users experience the problem as "Gmail won't load," the underlying cause could originate at any layer. A structured troubleshooting approach helps isolate the failure instead of relying on trial and error.
 
+| Layer | Typical Tools | 
+|-----|------|
+| 7	| curl, wget, browser developer tools |
+| 6	| openssl, browser certificate viewer |
+| 5	| Wireshark |
+| 4	| ss, netstat, Test-NetConnection |
+| 3	| ping, traceroute, ip, Resolve-DnsName, dig | 
+| 2	| ip neigh, arp, Wireshark |
+| 1	| ethtool, ip link, NIC status | 
 
 
 ---
