@@ -38,3 +38,48 @@ When a service uses a non-default port, the port number must be specified explic
 | 1433 |	TCP	| Microsoft SQL Server |	Default port for Microsoft SQL Server client connections. |
 | 3306 |	TCP	| MySQL | Default port for MySQL database servers. |
 | 5432 |	TCP	| PostgreSQL |	Default port for PostgreSQL database servers. |
+
+
+
+
+## Services File
+The service file provides a mapping between well-known port numbers and service names. They are reference files and do not determine which ports applications actually use.
+
+Location in Windows: ```C:\Windows\System32\drivers\etc\services```
+
+Location in Linux: ```/etc/services```
+
+## Troubleshooting
+
+| Symptom |	Possible Cause |
+|---------|----------------|
+| Website won't load |	Port 80 or 443 blocked |
+| SSH connection refused |	SSH service not running or port changed |
+| RDP unavailable |	Port 3389 blocked or service stopped |
+| DNS queries fail |	Port 53 unavailable |
+
+Related Commands
+| Goal	| Windows | Linux |
+|-------|---------|-------|
+| Test connectivity	| `Test-NetConnection` |	`nc`, `telnet` |
+| List listening ports |	`Get-NetTCPConnection`, `netstat` |	`ss`, `netstat` |
+| Identify process |	`netstat -ano` | `lsof` |
+
+## ICMP Traffic
+A successful `ping` does not necessarily indicate that an application is available. Likewise, an unsuccessful `ping` does not always mean that a host is unreachable. ICMP traffic is commonly filtered by firewalls, while application services such as HTTPS (TCP port 443) may still be fully operational. Network troubleshooting should therefore include testing both ICMP connectivity and the specific TCP or UDP ports required by the application.
+
+On Windows, ICMP Echo Requests (ping) are typically blocked by Windows Defender Firewall on the **Public** network profile. They're usually allowed on **Domain** and **Private** profiles, although this depends on Group Policy or local firewall configuration.
+
+The relevant inbound firewall rule is:
+
+```File and Printer Sharing (Echo Request - ICMPv4-In)```
+
+There is also:
+
+```File and Printer Sharing (Echo Request - ICMPv6-In)```
+
+PowerShell to enable it:
+
+`Enable-NetFirewallRule -DisplayGroup "File and Printer Sharing"`
+
+Or enable just the ICMP Echo rule by name.
