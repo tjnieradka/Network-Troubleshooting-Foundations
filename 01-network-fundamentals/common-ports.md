@@ -39,7 +39,24 @@ When a service uses a non-default port, the port number must be specified explic
 | 3306 |	TCP	| MySQL | Default port for MySQL database servers. |
 | 5432 |	TCP	| PostgreSQL |	Default port for PostgreSQL database servers. |
 
+## Commands to Show Ports
 
+Windows:
+
+`Test-NetConnection server01 -Port 443`  
+`Get-NetTCPConnection`  
+`netstat -ano`  
+
+You can explain:
+
+Linux:
+
+`ss -tuln`  
+`ss -tan`  
+`sudo lsof -i :443`  
+`sudo netstat -tulpn`  
+
+Note that `ss` has largely replaced netstat on current Linux distributions.
 
 
 ## Services File
