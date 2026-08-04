@@ -100,3 +100,5 @@ PowerShell to enable it:
 `Enable-NetFirewallRule -DisplayGroup "File and Printer Sharing"`
 
 Or enable just the ICMP Echo rule by name.
+
+Note: ICMP Echo Requests (ping) may be blocked by host-based or network firewalls. Windows Defender Firewall commonly blocks inbound ICMP Echo Requests on the Public network profile, while Linux behavior depends on the firewall configuration (for example, firewalld, iptables, or nftables). When troubleshooting connectivity, testing the required application port (for example, TCP port 443) is often more informative than relying solely on ping.
