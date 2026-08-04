@@ -14,7 +14,7 @@ The following example illustrates an IPv4 address and its associated subnet.
 
 An IPv4 address consists of 32 bits divided into four 8-bit octets. Together with the subnet mask, the address identifies both the network and the individual host.
 
-```
+```text
 192.168.1.25/24
 Subnet Mask:  255.255.255.0
 
@@ -30,12 +30,12 @@ If the subnet mask is incorrect, a device may incorrectly determine whether a de
 
 ## Default Gateway
 
-```
+```text
 PC
 192.168.1.25
       │
       │
-Switch
+Ethernet Switch
       │
       │
 Router (Default Gateway)
@@ -52,3 +52,66 @@ When the destination IP address is within the same subnet, devices communicate d
 
 If the default gateway is unreachable or incorrectly configured, communication outside the local subnet will fail, although communication with devices on the same subnet may still succeed.
 
+## Private IPv4 Address Ranges
+
+Private IPv4 address ranges are reserved for use within internal networks and are not routable on the public Internet. Organizations and home networks commonly use these ranges to assign addresses to local devices. When Internet access is required, Network Address Translation (NAT) translates one or more private IP addresses into a public IP address, allowing internal devices to communicate with external networks.
+
+```text
+Private Range	Typical Use
+10.0.0.0/8	Large enterprise networks
+172.16.0.0/12	Medium-sized enterprise networks
+192.168.0.0/16	Home and small office networks
+```
+During network troubleshooting, it is useful to recognize private IP addresses, as they indicate that NAT or another routing device is typically required for communication with the public Internet.
+
+## IP Address Classes
+Historically, IPv4 networks were divided into Class A, B, and C networks. Current networking instead uses Classless Inter-Domain Routing (CIDR), which allows more flexible allocation of address space. 
+
+Class | First Octet | Default Mask
+------|-------------|-------------
+A |	1–126	| /8
+B |	128–191 |	/16
+C |	192–223 |	/24
+
+
+## IPv6
+IPv6 uses 128-bit addresses and is becoming increasingly common in enterprise and cloud environments. Although this repository focuses primarily on IPv4 troubleshooting examples, the same diagnostic principles apply to IPv6.
+
+Example:
+
+```text
+IPv6 Address: 2001:db8:100:1::25/64
+
+Network Prefix: 2001:db8:100:1::/64
+Host ID:        ::25
+```
+## Troubleshooting
+
+| Question | Example Tool |
+|----------|--------------|
+| What's my IP? |	`ip addr`, `ipconfig`
+| What's my gateway? |	`ip route`, `route print`. `ipconfig /all`
+| Can I reach the default gateway? | `ping`
+| Is routing correct? |	`traceroute`, `tracert`
+| Is DNS the problem? | `dig`, `Resolve-DnsName`, `nslookup`
+
+```text
+
+Network Flow
+
+Application
+      │
+      ▼
+Needs remote server?
+      │
+      ▼
+Destination on local subnet?
+      │
+ ┌────┴─────┐
+ │          │
+Yes        No
+ │          │
+Direct     Forward to
+delivery   Default Gateway
+```
+The subnet mask determines whether the destination is on the local subnet. If it is not, the packet is forwarded to the configured default gateway for routing to another network.
