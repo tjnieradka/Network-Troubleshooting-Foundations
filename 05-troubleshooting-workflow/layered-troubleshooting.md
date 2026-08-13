@@ -39,7 +39,34 @@ A structured investigation might proceed as follows:
 7. Verify the web application is responding.
 8. Review application or server logs if necessary.
 
-Each step narrows the scope of the problem before moving to a higher layer.
+## Workflow Diagram
+---
+              User reports issue
+                     │
+                     ▼
+          Is the client connected?
+             │               │
+            No              Yes
+            │                │
+      Check hardware      Verify IP settings
+                             │
+                             ▼
+                   Can the gateway be reached?
+                             │
+                     ┌───────┴────────┐
+                     │                │
+                    No               Yes
+                     │                │
+            Check routing       Verify DNS
+                                      │
+                                      ▼
+                            Test required port
+                                      │
+                                      ▼
+                           Verify application
+
+
+
 
 ---
 
