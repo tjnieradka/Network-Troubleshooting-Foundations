@@ -1,5 +1,5 @@
 ## Overview
-One paragraph.
+`tcpdump` captures and shows live traffic on network interfaces.
 
 ## Usage
 - Verify packets arrive
