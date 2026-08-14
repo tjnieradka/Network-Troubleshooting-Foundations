@@ -33,21 +33,17 @@ netsh interface ip show config
 ```
 
 ### Reset TCP/IP
+Resets TCP/IP configuration when troubleshooting persistent network-stack problems
 
 ```cmd
 netsh int ip reset
 ```
 
 ### Reset Winsock
+Resets the Winsock catalog when troubleshooting socket/network communication problems
 
 ```cmd
 netsh winsock reset
-```
-
-### Display Wi-Fi Profiles
-
-```cmd
-netsh wlan show profiles
 ```
 
 ### Display Windows Firewall Profiles
