@@ -1,5 +1,7 @@
 # API Timeout
 
+TBA
+
 ## Overview
 
 This scenario demonstrates a structured approach to investigating an API connection timeout.
@@ -92,4 +94,4 @@ A structured investigation helps determine whether the issue is related to netwo
 
 ## Screenshots
 
-*(Insert screenshots of command output and HTTP responses.)*
+TBA
