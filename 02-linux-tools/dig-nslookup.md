@@ -19,15 +19,15 @@ Not every IP address has a corresponding PTR record, so a failed reverse lookup 
 
 - **DNS Record Types** - Common DNS record types include:
 
-Record |	Purpose
--------|---------
-`A`	| Maps a hostname to an IPv4 address
-`AAAA` |	Maps a hostname to an IPv6 address
-`CNAME`	| Creates an alias for another hostname
-`MX`	| Identifies mail servers for a domain
-`NS`	| Identifies authoritative DNS servers
-`PTR`	| Maps an IP address back to a hostname
-`TXT`	| Stores text information associated with a domain
+  Record |	Purpose
+  -------|---------
+  `A`	| Maps a hostname to an IPv4 address
+  `AAAA` |	Maps a hostname to an IPv6 address
+  `CNAME`	| Creates an alias for another hostname
+  `MX`	| Identifies mail servers for a domain
+  `NS`	| Identifies authoritative DNS servers
+  `PTR`	| Maps an IP address back to a hostname
+  `TXT`	| Stores text information associated with a domain
 
 - **DNS  Server** - DNS queries are sent to a DNS resolver configured on the system.  
 `dig` displays the DNS server that answered the query in the SERVER field.  
@@ -89,19 +89,21 @@ The output includes the DNS response, returned records, query time, and DNS serv
 
 View DNS resolution using `dig`.  
 
-![Viewing DNS resolution using `dig`](../images/linux\dig-google.png)  
+![Viewing DNS resolution using `dig`](../images/linux/dig-google.png)  
 
 View DNS resolution using `dig` and a specific DNS server.  
 
-![Viewing DNS resolution using `dig`and a specific DNS server](../images/linux\dig-at.png)  
+![Viewing DNS resolution using `dig`and a specific DNS server](../images/linux/dig-at.png)  
 
 View DNS resolution using `dig` where output shows a MX record.
-![Viewing DNS resolution using `dig` where output shows MX](../images/linux\dig-google.com-mx.png) 
 
-View DNS resolution using `dig` where output shows no MX record.
-![Viewing DNS resolution using `dig` where output shows no MX](../images/linux\dig-no-MX.png) 
+![Viewing DNS resolution using `dig` where output shows MX](../images/linux/dig-google.com-mx.png) 
+
+View DNS resolution using `dig` where output shows no MX record (`ANSWER: 0`)
+
+![Viewing DNS resolution using `dig` where output shows no MX](../images/linux/dig-no-MX.png) 
 
 View reverse DNS resolution using `nslookup`
 
-![Viewing DNS resolution using `nslookup`and a specific DNS server](../images/linux\nslookup-reverse.png) 
+![Viewing DNS resolution using `nslookup`and a specific DNS server](../images/linux/nslookup-reverse.png) 
 
