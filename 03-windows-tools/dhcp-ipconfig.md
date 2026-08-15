@@ -4,7 +4,7 @@ DHCP (Dynamic Host Configuration Protocol) automatically provides network config
 
 In Windows, ipconfig can be used to view the current IP configuration and perform common DHCP and DNS troubleshooting tasks.
 
-Key concepts:
+## Key concepts
 
 - **Automatic configuration** — DHCP allows clients to obtain network settings without requiring manual IP configuration.
 - **Leases** — IP addresses are assigned for a defined period and can be renewed by the client.
