@@ -103,7 +103,11 @@ View DNS resolution using `dig` where output shows no MX record (`ANSWER: 0`)
 
 ![Viewing DNS resolution using `dig` where output shows no MX](../images/linux/dig-no-MX.png) 
 
+View DNS resolution using `nslookup`
+
+![Viewing DNS resolution using `nslookup`](../images/linux/nslookup.png) 
+
 View reverse DNS resolution using `nslookup`
 
-![Viewing DNS resolution using `nslookup`and a specific DNS server](../images/linux/nslookup-reverse.png) 
+![Viewing reverse DNS resolution using `nslookup`](../images/linux/nslookup-reverse.png) 
 
