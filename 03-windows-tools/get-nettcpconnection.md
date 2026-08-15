@@ -1,51 +1,42 @@
-# Get-NetTCPConnection
-
 ## Overview
 
-`Get-NetTCPConnection` displays active TCP connections and listening ports on a Windows system. It is useful for verifying whether applications are accepting connections and identifying established sessions.
-
----
+`Get-NetTCPConnection` displays current TCP connections and listening ports on a Windows system. It can be used to examine local and remote addresses and ports, connection states, and the processes associated with TCP connections.
 
 ## Usage
 
-Use `Get-NetTCPConnection` to:
+Use Get-NetTCPConnection to:
 
-- Verify that services are listening
-- View active TCP connections
-- Identify local and remote ports
-- Troubleshoot connectivity issues
+- **Identify listening services** — verify that an application or service is listening on the expected TCP port.
+- **View established connections** — identify active TCP sessions between the local computer and remote systems.
+- **Investigate unexpected connections** — examine unfamiliar remote addresses, ports, or connection states.
+- **Troubleshoot application connectivity** — determine whether a problem involves a service that is not listening on the expected port.
+- **Examine TCP connection states** — identify connections in states such as Listen, Established, and TimeWait.
+- **Identify owning processes** — use the OwningProcess property with Get-Process to determine which process is associated with a connection.
 
----
+## Common Commands
 
-## Common Syntax
+1. **Display all TCP connections**  — Displays current TCP connections and listening ports.  
+`Get-NetTCPConnection`
 
-### Display All TCP Connections
+2. **Display listening TCP ports** —  Filters the results to TCP endpoints currently in the Listen state.  
+`Get-NetTCPConnection -State Listen`
 
-```powershell
-Get-NetTCPConnection
+3. **Filter by local port** — Displays TCP connections associated with a specified local port.  
+`Get-NetTCPConnection -LocalPort 443`
+
+4. **Filter by remote address** — Displays TCP connections associated with a specified remote IP address.  
+`Get-NetTCPConnection -RemoteAddress 192.168.1.25`
+
+5. **Identify processes associated with listening ports** — Displays listening ports with their owning process IDs and resolves the IDs to process names.  
+```
+Get-NetTCPConnection -State Listen |
+Select-Object LocalAddress, LocalPort, State, OwningProcess,
+    @{Name="ProcessName";Expression={(Get-Process -Id $_.OwningProcess).ProcessName}} |
+Sort-Object LocalPort |
+Format-Table -AutoSize
 ```
 
-### Display Listening Ports
-
-```powershell
-Get-NetTCPConnection -State Listen
-```
-
-### Filter by Local Port
-
-```powershell
-Get-NetTCPConnection -LocalPort 443
-```
-
-### Filter by Remote Address
-
-```powershell
-Get-NetTCPConnection -RemoteAddress 192.168.1.25
-```
-
----
-
-## Sample Output
+## Practical Examples
 
 *(Screenshot placeholder)*
 
