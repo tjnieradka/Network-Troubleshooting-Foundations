@@ -60,45 +60,30 @@ Similarly, a failed ICMP test does not necessarily mean that the destination is 
 
 ## Common Commands
 
-1. **Test Connectivity with `ping`** - Continuously sends ICMP Echo Requests until the command is stopped with Ctrl+C.
-`ping google.com`
+1. **Test Connectivity with `ping`** - Continuously sends ICMP Echo Requests until the command is stopped with Ctrl+C.  
+`ping google.com`  
 
-2. **Send a Limited Number of Ping Requests** - Sends four ICMP Echo Requests and then displays summary statistics.
-`ping -c 4 google.com`
+2. **Send a Limited Number of Ping Requests** - Sends four ICMP Echo Requests and then displays summary statistics.  
+`ping -c 4 google.com`  
 
-3. **Test the Default Gateway** - Tests connectivity between the Linux system and its local default gateway.
-`ping -c 4 192.168.35.2`
+3. **Test the Default Gateway** - Tests connectivity between the Linux system and its local default gateway.  
+`ping -c 4 192.168.35.2`  
 
-If the gateway cannot be reached, troubleshooting should generally begin with the local network configuration before investigating Internet connectivity.
+   If the gateway cannot be reached, troubleshooting should generally begin with the local network configuration before investigating Internet connectivity.   
 
-4. **Trace the Network Path** - Displays the sequence of network hops toward the destination. Typical Linux `traceroute` commonly uses UDP probes by default.
-`traceroute google.com`
+4. **Trace the Network Path** - Displays the sequence of network hops toward the destination. Typical Linux `traceroute` commonly uses UDP probes by default.  
+`traceroute google.com`  
 
-5. **Trace Using ICMP** - Uses ICMP Echo packets instead of the default UDP probes. This can produce more useful results on networks where the default traceroute probes are filtered.
-`sudo traceroute -I google.com`
+5. **Trace Using ICMP** - Uses ICMP Echo packets instead of the default UDP probes. This can produce more useful results on networks where the default traceroute probes are filtered.  
+`sudo traceroute -I google.com`  
 
-6. **Monitor a Network Path with `mtr`** - Continuously displays network hops along with latency and packet-loss statistics.
-`mtr google.com`
+6. **Monitor a Network Path with `mtr`** - Continuously displays network hops along with latency and packet-loss statistics.  
+`mtr google.com`  
 
-8. **Generate an mtr Report** - Runs ten measurement cycles and then produces a report. The report format is useful for documentation and troubleshooting because it provides a fixed set of results rather than continuously updating the terminal.
-`mtr -r -c 10 google.com`
+8. **Generate an mtr Report** - Runs ten measurement cycles and then produces a report. The report format is useful for documentation and troubleshooting because it provides a fixed set of results rather than continuously updating the terminal.  
+`mtr -r -c 10 google.com`  
 
 
 ## Practical Examples
 
-## Typical Troubleshooting Scenarios
-- Cannot reach gateway
-- Internet unavailable
-- High latency
-- Routing issue
-- Firewall blocking ICMP
 
-## Common Mistakes
-- Assuming ping proves the application is working
-- Assuming no ping means the server is offline
-- Ignoring packet loss
-
-## Related Commands
-`Test-NetConnection` (Windows PowerShell)  
-`tracepath` (Linux)  
-`mtr` (Linux)  
