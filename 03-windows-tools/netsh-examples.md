@@ -60,9 +60,13 @@ View firewall rules |	`netsh advfirewall firewall show rule name=all` | `Get-Net
 
 ## Practical Examples
 
-View basic network interface configuration using netsh`.  
+View basic network interface configuration using `netsh`.  
 
 ![Viewing configuration using netsh](../images/windows/netsh.png)  
+
+View basic network interface configuration using `netsh` with the current firewall profile
+
+![Viewing configuration using netsh with firewall profile](../images/windows/netsh-firewall-profile.png)  
 
 
 
