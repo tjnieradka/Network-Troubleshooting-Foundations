@@ -86,4 +86,24 @@ Similarly, a failed ICMP test does not necessarily mean that the destination is 
 
 ## Practical Examples
 
+Test connectivity using 'ping'.  
 
+![Viewing DNS resolution using `dig`and a specific DNS server](../images/linux/ping.png)  
+
+Test connectivity using 'ping' with four requests.
+
+![Viewing DNS resolution using `dig`and a specific DNS server](../images/linux/ping-c4.png)  
+
+Trace network path using `traceroute`.  
+`*` indicates that a traceroute probe did not receive a response before the timeout. Linux traceroute uses UDP probes by default; routers or firewalls may filter or ignore these probes even when traffic is being forwarded normally.
+
+![Viewing DNS resolution using `dig`and a specific DNS server](../images/linux/traceroute.png)  
+
+Trace network path using `traceroute` with ICMP.
+
+![Viewing DNS resolution using `dig`and a specific DNS server](../images/linux/traceroute-I.png)  
+
+View 'mtr' output to google.com.
+`mtr` output to google.com showing the network path, packet loss, and latency statistics for each hop. Hop 6 reports high apparent loss, but subsequent hops and the destination show 0% loss, indicating that the intermediate router is likely limiting responses to diagnostic probes rather than dropping forwarded traffic.
+
+![Viewing DNS resolution using `dig`and a specific DNS server](../images/linux/mtr.png)  
