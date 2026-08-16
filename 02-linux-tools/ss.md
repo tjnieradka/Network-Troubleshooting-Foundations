@@ -85,11 +85,48 @@ For example, if an application cannot be reached remotely, `ss` can first determ
 
 If the service is listening correctly, troubleshooting can then continue with firewall rules, routing, or remote connectivity testing.
 
+## Common Commands
 
+Display Listening TCP and UDP Ports
+ss -tuln
 
-## Common Syntax
+Options:
 
-### Linux
+-t — TCP sockets
+-u — UDP sockets
+-l — listening sockets
+-n — display numeric addresses and ports instead of resolving names
+
+This provides a quick view of network services listening on the system.
+
+Display TCP Connections
+ss -tan
+
+Displays TCP sockets using numeric addresses and ports.
+
+This includes both listening sockets and active or recently closed TCP connections.
+
+Display Listening Ports and Processes
+sudo ss -tulpn
+
+Adds process information to the listening TCP and UDP sockets.
+
+The -p option displays the process associated with each socket. Root privileges may be required to display complete process information.
+
+Display Established TCP Connections
+ss -tn state established
+
+Displays currently established TCP connections.
+
+Display Listening TCP Sockets
+ss -ltn
+
+Displays only listening TCP sockets.
+
+Check a Specific Port
+ss -ltn | grep ':22'
+
+Checks whether a TCP service is listening on port 22.
 
 `ss -tuln`  
 `ss -tan`  
@@ -101,9 +138,4 @@ Listening port
 Established connection
 TIME_WAIT
 
-## Troubleshooting
-- Service not listening
-- Wrong port
-- Port conflict
-- Too many connections
 
