@@ -87,51 +87,46 @@ If the service is listening correctly, troubleshooting can then continue with fi
 
 ## Common Commands
 
-Display Listening TCP and UDP Ports
-ss -tuln
+1. **Display Listening TCP and UDP Ports**
+  `ss -tuln`
 
-Options:
+  Options:
 
--t — TCP sockets
--u — UDP sockets
--l — listening sockets
--n — display numeric addresses and ports instead of resolving names
+  `-t` — TCP sockets
+  `-u` — UDP sockets
+  `-l` — listening sockets
+  `-n` — display numeric addresses and ports instead of resolving names
 
-This provides a quick view of network services listening on the system.
+  This provides a quick view of network services listening on the system.
 
-Display TCP Connections
-ss -tan
+2. **Display TCP Connections**
+  `ss -tan`
 
-Displays TCP sockets using numeric addresses and ports.
+  Displays TCP sockets using numeric addresses and ports.
 
-This includes both listening sockets and active or recently closed TCP connections.
+  This includes both listening sockets and active or recently closed TCP connections.
 
-Display Listening Ports and Processes
-sudo ss -tulpn
+3. **Display Listening Ports and Processes**
+  `sudo ss -tulpn`
 
-Adds process information to the listening TCP and UDP sockets.
+  Adds process information to the listening TCP and UDP sockets.
 
-The -p option displays the process associated with each socket. Root privileges may be required to display complete process information.
+  The `-p` option displays the process associated with each socket. Root privileges may be required to display complete process information.
 
-Display Established TCP Connections
-ss -tn state established
+4. **Display Established TCP Connections**
+  `ss -tn state established`
 
-Displays currently established TCP connections.
+  Displays currently established TCP connections.
 
-Display Listening TCP Sockets
-ss -ltn
+5. **Display Listening TCP Sockets**
+  `ss -ltn`
 
-Displays only listening TCP sockets.
+  Displays only listening TCP sockets.
 
-Check a Specific Port
-ss -ltn | grep ':22'
+6. **Check a Specific Port**
+  `ss -ltn | grep ':22'`
 
-Checks whether a TCP service is listening on port 22.
-
-`ss -tuln`  
-`ss -tan`  
-`ss -tulpn`  
-
+  Checks whether a TCP service is listening on port 22.  
 
 ## Practical Examples
 Listening port
