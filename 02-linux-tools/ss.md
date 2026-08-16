@@ -14,9 +14,6 @@ Verify port or services configuration.
 `ss -tan`  
 `ss -tulpn`  
 
-### Windows
-`Get-NetTCPConnection`  
-`netstat -ano`  
 
 ## Practical Examples
 Listening port
@@ -29,6 +26,3 @@ TIME_WAIT
 - Port conflict
 - Too many connections
 
-## Related Commands
-`lsof` (Linux)  
-`Test-NetConnection` (Windows)  
