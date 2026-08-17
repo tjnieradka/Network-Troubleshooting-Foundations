@@ -84,17 +84,19 @@ The **OSI (Open Systems Interconnection) model** provides a conceptual framework
 02-linux-tools/
     ping-traceroute.md
     dig-nslookup.md
-    ss-netstat.md
+    ss.md
     curl-wget.md
     tcpdump-basics.md
+    dhcp-client.md
 
 03-windows-tools/
     test-netconnection.md
     resolve-dnsname.md
     get-nettcpconnection.md
     netsh-examples.md
+    dhcp-ipconfig.md
 
-04-packet-analysis/
+04-packet-analysis/ -- In development
     wireshark-basics.md --- TBA
     reading-packets.md --- TBA
 
@@ -102,7 +104,7 @@ The **OSI (Open Systems Interconnection) model** provides a conceptual framework
     layered-troubleshooting.md
     common-checklist.md
 
-06-real-world-scenarios/  --- TBA
+06-real-world-scenarios/   -- In development
     dns-resolution-failure.md --- TBA
     service-not-listening.md --- TBA
     api-timeout.md --- TBA
