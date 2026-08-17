@@ -1,3 +1,5 @@
+# ping, traceroute, and mtr
+
 ## Overview
 
 `ping`, `traceroute`, and `mtr` are Linux network diagnostic tools used to test connectivity and investigate the network path between a local system and a destination.
