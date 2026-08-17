@@ -178,9 +178,3 @@ The following open and widely accepted references are used throughout this repos
 
 Additional references are cited within individual sections where appropriate.
 
----
-
-## Status
-
-This repository is under active development.  
-Content will be expanded incrementally with additional tools, scenarios, and documentation.
