@@ -181,6 +181,7 @@ If the resource does not exist, the server may return an HTTP error such as `404
 ### Verify Web Server Connectivity
 `curl https://example.com`
 
+![Establish connection using curl](../images/linux/curl.png)  
 
 A successful request returns the web page content.
 
@@ -196,13 +197,12 @@ This provides more information about application availability than a basic `ping
 
 ### Check HTTP Response Headers
 
-```bash id="z7tqh6"
-curl -I https://example.com
-```
+`curl -I https://example.com`
+
+![Establish connection using curl -I](../images/linux/curl-I.png)  
 
 Example output includes:
-
-```text id="wuy2dv"
+```
 HTTP/2 200
 content-type: text/html
 ```
@@ -213,24 +213,12 @@ Examining headers provides a quick way to verify that a web service is respondin
 
 ### Troubleshoot an HTTPS Connection
 
-```bash id="4rm57b"
-curl -v https://example.com
-```
+`curl -v https://example.com`
+
+![Establish connection using curl -v](../images/linux/curl-v.png)  
 
 Verbose output shows the stages involved in establishing the connection.
 
-The output can include:
-
-```text id="snb13f"
-Trying 172.66.147.243...
-Connected to example.com (...) port 443
-...
-SSL connection using TLSv1.3
-...
-SSL certificate verify ok.
-...
-GET / HTTP/2
-```
 
 This demonstrates that:
 
@@ -244,15 +232,11 @@ This makes `curl -v` useful for identifying approximately where an HTTPS connect
 
 ### Identify a DNS Resolution Failure
 
-```bash id="pks8d9"
-curl -v https://example.invalid
-```
+
+`curl -v https://example.invalid`
+![DNS error when establishing connection using curl](../images/linux/curl-error.png)  
 
 Example:
-
-```text id="kjc96s"
-Could not resolve host: example.invalid
-```
 
 This indicates that hostname resolution failed.
 
@@ -261,16 +245,9 @@ The failure occurs before a TCP connection to a web server can be established.
 DNS configuration can then be investigated using tools such as `dig` or `nslookup`.
 
 ### Identify a Refused TCP Connection
+`curl -v http://127.0.0.1:9999`
 
-```bash id="36u2ib"
-curl -v http://127.0.0.1:9999
-```
-
-Example:
-
-```text id="96x9sz"
-connect to 127.0.0.1 port 9999 failed: Connection refused
-```
+![Refused connection error when establishing connection using curl](../images/linux/curl-error2.png)  
 
 A connection refusal indicates that the destination host was reached but the TCP connection was rejected.
 
@@ -280,24 +257,14 @@ This differs from a timeout, where a response to the connection attempt is not r
 
 The local listening sockets could be checked with:
 
-```bash id="mn5u78"
-ss -ltn
-```
+`ss -ltn`
 
 ### Identify an HTTP 404 Error
 
-```bash id="t1fsb6"
-wget https://example.com/file.zip
-```
+`wget https://example.com/file.zip`
 
-Example:
+![HTTP 404 error when establishing connection using wget](../images/linux/wget-error.png)  
 
-```text id="qud8ic"
-HTTP request sent, awaiting response... 404 Not Found
-ERROR 404: Not Found.
-```
-
-This demonstrates an important troubleshooting distinction.
 
 DNS resolution and the connection to the HTTPS server succeeded. The server also processed the HTTP request and returned a response.
 
@@ -305,23 +272,13 @@ The problem is at the HTTP/application level: the requested resource does not ex
 
 ### Download Web Content
 
-```bash id="k5un6y"
-wget https://example.com
-```
+`wget https://example.com`
 
-Example output shows:
-
-```text id="omwjfc"
-HTTP request sent, awaiting response... 200 OK
-Saving to: 'index.html'
-```
+![HTTP 404 error when establishing connection using wget](../images/linux/wget-success.png)  
 
 A successful download demonstrates that the remote resource was reached and saved to the local filesystem.
 
 The downloaded file can be verified with:
-
-```bash id="f7hsop"
-ls
-```
+`ls`
 
 This illustrates the primary difference between the default behavior of `curl` and `wget`: `curl` normally writes retrieved content to standard output, while `wget` normally saves downloaded content to a file.
