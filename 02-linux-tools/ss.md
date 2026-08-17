@@ -129,8 +129,14 @@ If the service is listening correctly, troubleshooting can then continue with fi
   Checks whether a TCP service is listening on port 22.    
 
 ## Practical Examples
-Listening port
-Established connection
-TIME_WAIT
+
+Display TCP Connections
+![Viewing ports and processes using ss tan](../images/linux/ss-tan.png) 
+
+Display Listening TCP and UDP Ports
+![Viewing ports and processes using ss tuln](../images/linux/ss-tuln.png) 
+
+Display Listening Ports and Processes
+![Viewing ports and processes using ss tulpn](../images/linux/ss-tulpn.png) 
 
 
