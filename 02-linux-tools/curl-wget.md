@@ -56,8 +56,7 @@ Common ports are:
 A client such as `curl` sends an HTTP request to a server.
 
 For example:
-
-```text id="k2qiv6"
+```
 GET / HTTP/2
 Host: example.com
 ```
@@ -85,35 +84,33 @@ An HTTP error is different from a network connectivity failure. For example, rec
 ### DNS Resolution
 
 Before connecting to a hostname such as:
+`example.com`
 
-```text id="4q88cw"
-example.com
-```
 
-the client normally resolves the hostname to an IP address.
+the client normally resolves the hostname to an IP address.  
 
-A DNS failure can therefore prevent an HTTP connection from being attempted.
+A DNS failure can therefore prevent an HTTP connection from being attempted.  
 
-### TCP Connection
+### TCP Connection  
 
-After resolving the hostname, the client establishes a TCP connection to the web server.
+After resolving the hostname, the client establishes a TCP connection to the web server.  
 
-For HTTPS, this normally means connecting to TCP port 443.
+For HTTPS, this normally means connecting to TCP port 443.  
 
-A connection failure at this stage may indicate:
+A connection failure at this stage may indicate:  
 
-* The service is not listening
-* The port is blocked
-* The destination is unreachable
-* A firewall is rejecting the connection
+* The service is not listening  
+* The port is blocked  
+* The destination is unreachable  
+* A firewall is rejecting the connection  
 
 ### TLS
 
-HTTPS uses Transport Layer Security (TLS) to encrypt communication.
+HTTPS uses Transport Layer Security (TLS) to encrypt communication.  
 
-During TLS negotiation, the client and server establish encryption parameters and the server presents its digital certificate.
+During TLS negotiation, the client and server establish encryption parameters and the server presents its digital certificate.    
 
-`curl -v` can display information about this process, including:
+`curl -v` can display information about this process, including:  
 
 * TLS version
 * Certificate verification
@@ -123,26 +120,26 @@ During TLS negotiation, the client and server establish encryption parameters an
 
 ### curl vs. wget
 
-Although both tools can retrieve web content, their typical purposes differ:
+Although both tools can retrieve web content, their typical purposes differ:  
 
-* `curl` is well suited to testing and interacting with network services and APIs.
-* `wget` is well suited to downloading files and web content to disk.
+* `curl` is suited to testing and interacting with network services and APIs.  
+* `wget` is suited to downloading files and web content to disk.  
 
 ---
 
 ## Common Commands
 
-1. **Retrieve a Web Page**
-`curl https://example.com`
-Retrieves the resource and writes the response body to standard output.
+1. **Retrieve a Web Page**  
+`curl https://example.com`  
+Retrieves the resource and writes the response body to standard output.  
 
-For an HTML page, the HTML source is displayed directly in the terminal.
+For an HTML page, the HTML source is displayed directly in the terminal.  
 
-2. **Display HTTP Headers**
-`curl -I https://example.com`
-Retrieves response headers without displaying the normal response body.
+2. **Display HTTP Headers**  
+`curl -I https://example.com`  
+Retrieves response headers without displaying the normal response body.  
 
-This is useful for quickly checking:
+This is useful for quickly checking:  
 
 * HTTP status
 * Content type
@@ -150,27 +147,27 @@ This is useful for quickly checking:
 * Redirects
 * Caching information
 
-3. **Display Verbose Connection Information**
-`curl -v https://example.com`
-Displays detailed information about the connection, including DNS resolution, TCP connection establishment, TLS negotiation, certificate verification, and HTTP communication.
-Verbose mode is particularly useful for troubleshooting.
+3. **Display Verbose Connection Information**  
+`curl -v https://example.com`  
+Displays detailed information about the connection, including DNS resolution, TCP connection establishment, TLS negotiation, certificate verification, and HTTP communication.  
+Verbose mode is particularly useful for troubleshooting.  
 
-4. **Follow Redirects**
-`curl -L http://example.com`
+4. **Follow Redirects**  
+`curl -L http://example.com`  
 
-Follows HTTP redirects until the final destination is reached.
+Follows HTTP redirects until the final destination is reached.  
 
-5. **Save Output to a File**
-`curl -o page.html https://example.com`
-Saves the response body as `page.html` instead of displaying it in the terminal.
+5. **Save Output to a File**  
+`curl -o page.html https://example.com`  
+Saves the response body as `page.html` instead of displaying it in the terminal.  
 
-6. **Download Content with 'wget'**
-`wget https://example.com`
-Downloads the requested resource and saves it locally.
+6. **Download Content with 'wget'**  
+`wget https://example.com`  
+Downloads the requested resource and saves it locally.  
 
-7. **Download a Specific File**
-`wget https://example.com/file.zip`
-Attempts to download the specified resource.
+7. **Download a Specific File**  
+`wget https://example.com/file.zip`  
+Attempts to download the specified resource.  
 
 If the resource does not exist, the server may return an HTTP error such as `404 Not Found`.
 
@@ -200,12 +197,6 @@ This provides more information about application availability than a basic `ping
 `curl -I https://example.com`
 
 ![Establish connection using curl -I](../images/linux/curl-I.png)  
-
-Example output includes:
-```
-HTTP/2 200
-content-type: text/html
-```
 
 `200` indicates that the HTTP request succeeded.
 
