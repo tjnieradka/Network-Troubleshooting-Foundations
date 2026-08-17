@@ -123,13 +123,12 @@ Each section includes:
 
 - `curl` / `wget`  
 - `dig / `nslookup`  
-- `firewalld` / `nftables`  
-- `ip`  
-- `nmap` (safe discovery only)  
+- `ip`    
 - `ping`  
 - `ss`  
 - `tcpdump`  
-- `traceroute`  
+- `traceroute`
+- `mtr`  
 
 ### Windows (PowerShell)
 - `Test-NetConnection`
@@ -137,7 +136,6 @@ Each section includes:
 - `Get-NetTCPConnection`
 - `Get-NetIPConfiguration`
 - `netsh`
-- Windows Defender Firewall with Advanced Security
 
 ---
 
