@@ -16,13 +16,13 @@ On Rocky Linux, NetworkManager manages network connections and DHCP configuratio
 
 ## Key Concepts
 
-### DHCP
+- **DHCP**
 
 DHCP automatically provides network configuration to clients instead of requiring administrators to manually configure each system.
 
 A DHCP client typically receives an IP address and other network settings from a DHCP server.
 
-### DHCP Lease
+- **DHCP Lease**
 
 An address assigned through DHCP is normally provided for a limited period called a **lease**.
 
@@ -30,7 +30,7 @@ The client can renew the lease to continue using the configuration.
 
 Linux tools may display the remaining valid and preferred lifetime of a dynamically assigned address.
 
-### Dynamic vs. Static Addressing
+- **Dynamic vs. Static Addressing**
 
 A **dynamic IP address** is assigned automatically through DHCP.
 
@@ -44,7 +44,7 @@ For example:
 
 The `dynamic` attribute indicates that the IPv4 address was assigned dynamically rather than configured as a permanent static address.
 
-### NetworkManager
+- **NetworkManager**
 
 NetworkManager is a Linux service that manages network interfaces and connection profiles.
 
@@ -54,7 +54,7 @@ Rocky Linux uses NetworkManager, and its command-line interface is:
 
 `nmcli` can display interface status, connection profiles, IP addresses, routes, gateways, DNS configuration, and other network settings.
 
-### Device vs. Connection
+- **Device vs. Connection**
 
 NetworkManager distinguishes between a **device** and a **connection profile**.
 
@@ -66,13 +66,13 @@ A connection profile contains the configuration that NetworkManager applies to t
 
 The distinction is useful when troubleshooting because an interface can exist even when its expected connection profile is not active.
 
-### Default Gateway
+- **Default Gateway**
 
 The default gateway is the router used to reach destinations outside the local subnet.
 
 A DHCP server can provide the default gateway to the client as part of its network configuration.
 
-### DNS Configuration
+- **DNS Configuration**
 
 DHCP can also provide the address of a DNS resolver.
 
