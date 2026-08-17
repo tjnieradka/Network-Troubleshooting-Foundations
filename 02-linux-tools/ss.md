@@ -1,3 +1,5 @@
+# ss
+
 ## Overview
 
 `ss` (socket statistics) is a Linux command used to display information about network sockets, listening ports, and active network connections.
