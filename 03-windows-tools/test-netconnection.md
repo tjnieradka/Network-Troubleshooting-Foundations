@@ -1,3 +1,5 @@
+# Test-NetConnection
+
 ## Overview
 
 `Test-NetConnection` is a PowerShell cmdlet used to test network connectivity between a Windows system and a remote host. It can perform ICMP connectivity tests, test TCP ports, resolve hostnames, and provide information about the network interface and route used to reach a destination.
