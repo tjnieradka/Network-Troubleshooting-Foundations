@@ -1,3 +1,5 @@
+# dig and nslookup
+
 ## Overview
 
 `dig` and `nslookup` are command-line tools used to query the Domain Name System (DNS) and troubleshoot name resolution.
