@@ -12,6 +12,8 @@ The material is intended to demonstrate knowledge applicable to the following:
 - Application & Platform Support
 - Cybersecurity (defensive / operational focus)
 
+> **Project Status:** This repository is under active development. Core network fundamentals and Linux/Windows troubleshooting tools are available, while packet analysis, troubleshooting workflows, and real-world scenarios are being expanded. Additional examples, screenshots, and documentation will be added as the project develops.
+
 ---
 
 ## Scope
