@@ -1,3 +1,5 @@
+# Resolve-DnsName
+
 ## Overview
 
 `Resolve-DnsName` is a PowerShell cmdlet used to query DNS servers and retrieve DNS record information. It can perform forward and reverse lookups, query specific DNS record types, and send queries to a specified DNS server.
