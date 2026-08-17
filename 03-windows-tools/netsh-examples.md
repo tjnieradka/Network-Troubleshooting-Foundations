@@ -1,3 +1,5 @@
+# netsh
+
 ## Overview
 
 `netsh` (Network Shell) is a Windows command-line utility used to view, configure, and troubleshoot network components. It can manage network interfaces, TCP/IP settings, Windows Firewall, Winsock, and wireless networking.
