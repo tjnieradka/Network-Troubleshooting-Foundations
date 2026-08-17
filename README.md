@@ -95,17 +95,17 @@ The **OSI (Open Systems Interconnection) model** provides a conceptual framework
     netsh-examples.md
 
 04-packet-analysis/
-    wireshark-basics.md
-    reading-packets.md
+    wireshark-basics.md --- TBA
+    reading-packets.md --- TBA
 
 05-troubleshooting-workflow/
     layered-troubleshooting.md
     common-checklist.md
 
-06-real-world-scenarios/
-    dns-resolution-failure.md
-    service-not-listening.md
-    api-timeout.md
+06-real-world-scenarios/  --- TBA
+    dns-resolution-failure.md --- TBA
+    service-not-listening.md --- TBA
+    api-timeout.md --- TBA
 ```
 
 Each section includes:
