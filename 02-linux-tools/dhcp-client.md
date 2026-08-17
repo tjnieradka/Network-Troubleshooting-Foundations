@@ -164,14 +164,13 @@ can be used after reconnecting the interface to verify that network configuratio
 ## Practical Examples
 
 ### Verify a Dynamically Assigned Address
+`ip addr`
 
-```bash
-ip addr
-```
+![V](../images/linux/ip-addr-dynamic.png) 
 
 Example output may contain:
 
-```text
+```
 2: ens160: <BROADCAST,MULTICAST,UP,LOWER_UP>
     inet 192.168.35.141/24 ... scope global dynamic ... ens160
 ```
@@ -186,10 +185,8 @@ The output confirms that:
 This is a quick way to verify that the interface has obtained an IPv4 configuration.
 
 ### Identify the Active NetworkManager Connection
-
-```bash
-nmcli connection show
-```
+`nmcli connection show`  
+![V](../images/linux/nmcli-connection-show.png) 
 
 The output identifies available NetworkManager connection profiles and the devices using them.
 
@@ -198,10 +195,8 @@ A connection associated with `ens160` confirms that NetworkManager has a connect
 This can help distinguish between a problem with the physical or virtual interface and a problem with its NetworkManager configuration.
 
 ### Verify Address, Gateway, and DNS Configuration
-
-```bash
-nmcli device show
-```
+`nmcli device show`  
+![V](../images/linux/nmcli-device-show.png)  
 
 For `ens160`, important fields include:
 
@@ -222,22 +217,15 @@ This provides a more complete view of the client's network configuration than ch
 ### Reconnect the Interface and Refresh DHCP Configuration
 
 Disconnect the interface:
-
-```bash
-sudo nmcli device disconnect ens160
-```
+`sudo nmcli device disconnect ens160`
 
 Reconnect it:
-
-```bash
-sudo nmcli device connect ens160
-```
+`sudo nmcli device connect ens160`
 
 Then verify the resulting configuration:
+`ip addr`  
 
-```bash
-ip addr
-```
+![V](../images/linux/nmi-dhcp-release-renew.png) 
 
 If the connection profile uses DHCP, reconnecting the interface causes NetworkManager to activate the connection and obtain network configuration.
 
@@ -248,16 +236,11 @@ In this example, `ens160` receives a dynamic IPv4 address again after the connec
 ### DHCP Troubleshooting Workflow
 
 If a Linux client cannot communicate with the network, begin by checking its address:
+`ip addr`
 
-```bash
-ip addr
-```
 
 Then inspect its NetworkManager configuration:
-
-```bash
-nmcli device show ens160
-```
+`nmcli device show ens160`
 
 Verify:
 
@@ -269,18 +252,14 @@ Verify:
 
 If the configuration appears correct, continue troubleshooting with tools such as `ping`, `dig`, `ss`, or `tcpdump` depending on the symptoms.
 
----
-
 ### Note About dhclient
 
 Some Linux environments may include the traditional `dhclient` utility for manually requesting or renewing DHCP leases.
 
 For example:
+`sudo dhclient`
 
-```bash
-sudo dhclient
-```
 
 However, DHCP client management varies between Linux distributions and network-management frameworks.
 
-On modern Rocky Linux systems using NetworkManager, `nmcli` should generally be used to manage NetworkManager-controlled connections rather than relying on `dhclient` as the primary DHCP management tool.
+On current Rocky Linux systems using NetworkManager, `nmcli` should generally be used to manage NetworkManager-controlled connections rather than relying on `dhclient` as the primary DHCP management tool.
