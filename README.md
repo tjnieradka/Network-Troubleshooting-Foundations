@@ -30,15 +30,15 @@ This repository emphasizes the following:
 
 ## Lab Environments
 
+## Lab Environments
+
 The following lab systems are used throughout this repository:
 
-- **Rocky Linux** (RHEL-compatible)  
- A RHEL-compatible Linux distribution representing a typical enterprise or cloud-hosted Linux server.
-Tools and concepts demonstrated are generally applicable to modern Linux distributions.
+- **Rocky Linux (RHEL-compatible)**  
+  A RHEL-compatible Linux distribution representing a typical enterprise or cloud-hosted Linux server. Tools and concepts demonstrated are generally applicable to current Linux distributions.
 
-- **Windows 11 Pro** (domain-joined, hybrid AD–Entra environment)  
-A domain-joined workstation integrated with a hybrid Active Directory and Microsoft Entra ID environment.
-Examples demonstrate Windows networking diagnostics using PowerShell and built-in networking tools commonly available in enterprise environments.
+- **Windows 11 Pro (domain-joined, hybrid AD–Entra environment)**  
+  A domain-joined workstation integrated with a hybrid Active Directory and Microsoft Entra ID environment. Examples demonstrate Windows networking diagnostics using PowerShell and built-in networking tools commonly available in enterprise environments.
 
 Unless otherwise noted, all demonstrations are performed in isolated lab environments.
 
@@ -63,8 +63,8 @@ Typical troubleshooting activities include:
 
 The **OSI (Open Systems Interconnection) model** provides a conceptual framework for understanding how network communication occurs across layered components. Throughout this repository it serves as a practical troubleshooting guide for narrowing the scope of an issue.
 
-| Layer | Name | Example Focus |
-|-----|------|---------------|
+| **Layer** | **Name** | **Example Focus** |
+| ---: | --- | --- |
 | 7 | Application | HTTP, APIs, DNS queries |
 | 6 | Presentation | Encoding, encryption |
 | 5 | Session | Session establishment |
@@ -98,18 +98,18 @@ The **OSI (Open Systems Interconnection) model** provides a conceptual framework
     netsh-examples.md
     dhcp-ipconfig.md
 
-04-packet-analysis/ -- In development
-    wireshark-basics.md --- TBA
-    reading-packets.md --- TBA
+04-packet-analysis/            -- In development
+    wireshark-basics.md        -- TBA
+    reading-packets.md         -- TBA
 
 05-troubleshooting-workflow/
     layered-troubleshooting.md
     common-checklist.md
 
-06-real-world-scenarios/   -- In development
-    dns-resolution-failure.md --- TBA
-    service-not-listening.md --- TBA
-    api-timeout.md --- TBA
+06-real-world-scenarios/       -- In development
+    dns-resolution-failure.md  -- TBA
+    service-not-listening.md   -- TBA
+    api-timeout.md             -- TBA
 ```
 
 Each section includes:
@@ -125,20 +125,23 @@ Each section includes:
 
 ### Linux
 
-- `curl` / `wget`  
-- `dig / `nslookup`  
-- `ip`    
-- `ping`  
-- `ss`  
-- `tcpdump`  
+- `curl` / `wget`
+- `dig` / `nslookup`
+- `ip`
+- `nmcli`
+- `ping`
+- `ss`
+- `tcpdump`
 - `traceroute`
-- `mtr`  
+- `mtr`
 
-### Windows (PowerShell)
+### Windows
+
 - `Test-NetConnection`
 - `Resolve-DnsName`
 - `Get-NetTCPConnection`
 - `Get-NetIPConfiguration`
+- `ipconfig`
 - `netsh`
 
 ---
@@ -148,7 +151,7 @@ Each section includes:
 Where applicable, screenshots are included to:
 - Illustrate command output
 - Highlight diagnostic indicators
-- Show differences between expected vs faulty states
+- Show differences between expected and unexpected results
 
 Screenshots are used to **support explanation**, not as a substitute for analysis.
 
@@ -174,7 +177,6 @@ The following open and widely accepted references are used throughout this repos
 - https://www.cloudflare.com/learning/network-layer/what-is-the-osi-model/
 - https://learn.microsoft.com/en-us/windows-server/networking/
 - https://man7.org/linux/man-pages/
-- https://www.geeksforgeeks.org/open-systems-interconnection-model-osi/
 
 Additional references are cited within individual sections where appropriate.
 
