@@ -10,6 +10,94 @@
 
 Together, these tools can help verify connectivity beyond basic network-layer tests such as `ping`.
 
+## Key Concepts
+
+- **HTTP and HTTPS**
+
+HTTP is an application-layer protocol used to exchange web content between clients and servers.
+
+HTTPS uses HTTP over an encrypted TLS connection.
+
+Common ports are:
+
+| Protocol | Default Port |
+| -------- | -----------: |
+| HTTP     |       TCP 80 |
+| HTTPS    |      TCP 443 |
+
+- **HTTP Request and Response**
+
+A client such as `curl` sends an HTTP request to a server.
+
+For example:
+```
+GET / HTTP/2
+Host: example.com
+```
+
+The server then returns an HTTP response containing a status code, headers, and optionally content.
+
+- **HTTP Status Codes**
+
+HTTP status codes indicate the result of a request.
+
+Common examples include:
+
+| Code                        | Meaning                                          |
+| --------------------------- | ------------------------------------------------ |
+| `200 OK`                    | Request succeeded                                |
+| `301 Moved Permanently`     | Resource has permanently moved                   |
+| `302 Found`                 | Resource is temporarily available elsewhere      |
+| `403 Forbidden`             | Server understood the request but refuses access |
+| `404 Not Found`             | Requested resource was not found                 |
+| `500 Internal Server Error` | Server encountered an internal error             |
+| `503 Service Unavailable`   | Service is temporarily unavailable               |
+
+An HTTP error is different from a network connectivity failure. For example, receiving `404 Not Found` demonstrates that communication with the web server succeeded, but the requested resource does not exist.
+
+- **DNS Resolution**
+
+Before connecting to a hostname such as:
+`example.com`
+
+
+the client normally resolves the hostname to an IP address.  
+
+A DNS failure can therefore prevent an HTTP connection from being attempted.  
+
+- **TCP Connection**  
+
+After resolving the hostname, the client establishes a TCP connection to the web server.  
+
+For HTTPS, this normally means connecting to TCP port 443.  
+
+A connection failure at this stage may indicate:  
+
+* The service is not listening  
+* The port is blocked  
+* The destination is unreachable  
+* A firewall is rejecting the connection  
+
+- **TLS**
+
+HTTPS uses Transport Layer Security (TLS) to encrypt communication.  
+
+During TLS negotiation, the client and server establish encryption parameters and the server presents its digital certificate.    
+
+`curl -v` can display information about this process, including:  
+
+* TLS version
+* Certificate verification
+* Certificate subject
+* Certificate issuer
+* Negotiated protocol
+
+- **curl vs. wget**
+
+Although both tools can retrieve web content, their typical purposes differ:  
+
+* `curl` is suited to testing and interacting with network services and APIs.  
+* `wget` is suited to downloading files and web content to disk.  
 
 ## Usage
 
@@ -36,96 +124,6 @@ These tools test communication at the application layer. A system may successful
 
 
 
-## Key Concepts
-
-### HTTP and HTTPS
-
-HTTP is an application-layer protocol used to exchange web content between clients and servers.
-
-HTTPS uses HTTP over an encrypted TLS connection.
-
-Common ports are:
-
-| Protocol | Default Port |
-| -------- | -----------: |
-| HTTP     |       TCP 80 |
-| HTTPS    |      TCP 443 |
-
-### HTTP Request and Response
-
-A client such as `curl` sends an HTTP request to a server.
-
-For example:
-```
-GET / HTTP/2
-Host: example.com
-```
-
-The server then returns an HTTP response containing a status code, headers, and optionally content.
-
-### HTTP Status Codes
-
-HTTP status codes indicate the result of a request.
-
-Common examples include:
-
-| Code                        | Meaning                                          |
-| --------------------------- | ------------------------------------------------ |
-| `200 OK`                    | Request succeeded                                |
-| `301 Moved Permanently`     | Resource has permanently moved                   |
-| `302 Found`                 | Resource is temporarily available elsewhere      |
-| `403 Forbidden`             | Server understood the request but refuses access |
-| `404 Not Found`             | Requested resource was not found                 |
-| `500 Internal Server Error` | Server encountered an internal error             |
-| `503 Service Unavailable`   | Service is temporarily unavailable               |
-
-An HTTP error is different from a network connectivity failure. For example, receiving `404 Not Found` demonstrates that communication with the web server succeeded, but the requested resource does not exist.
-
-### DNS Resolution
-
-Before connecting to a hostname such as:
-`example.com`
-
-
-the client normally resolves the hostname to an IP address.  
-
-A DNS failure can therefore prevent an HTTP connection from being attempted.  
-
-### TCP Connection  
-
-After resolving the hostname, the client establishes a TCP connection to the web server.  
-
-For HTTPS, this normally means connecting to TCP port 443.  
-
-A connection failure at this stage may indicate:  
-
-* The service is not listening  
-* The port is blocked  
-* The destination is unreachable  
-* A firewall is rejecting the connection  
-
-### TLS
-
-HTTPS uses Transport Layer Security (TLS) to encrypt communication.  
-
-During TLS negotiation, the client and server establish encryption parameters and the server presents its digital certificate.    
-
-`curl -v` can display information about this process, including:  
-
-* TLS version
-* Certificate verification
-* Certificate subject
-* Certificate issuer
-* Negotiated protocol
-
-### curl vs. wget
-
-Although both tools can retrieve web content, their typical purposes differ:  
-
-* `curl` is suited to testing and interacting with network services and APIs.  
-* `wget` is suited to downloading files and web content to disk.  
-
----
 
 ## Common Commands
 
