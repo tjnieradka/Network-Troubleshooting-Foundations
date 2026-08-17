@@ -1,3 +1,5 @@
+# DHCP and ipconfig
+
 ## Overview
 
 DHCP (Dynamic Host Configuration Protocol) automatically provides network configuration to DHCP-enabled clients. This typically includes an IP address, subnet mask, default gateway, DNS servers, and a lease duration.
