@@ -34,25 +34,51 @@ Display filters were applied after capture rather than capture filters so that t
 
 ### 3.1 Generate ICMP Traffic
 
+To generate ICMP traffic, we are using this command  `ping /n 192.168.10.10` . We are pinging the lab Domain Controller five times from the Wireshark client.
+
 ![](../images/wireshark/ping.png)  
 
 ### 3.2 Apply the ICMP Display Filter
+
+As shown in the screenshot near the top left-hand corner, we applied the `icmp` filter.
 
 ![](../images/wireshark/ping-in-wireshark.png)  
 
 ### 3.3 Analyze the Packets
 
+The Wireshark screenshot shows the following: 
+
+- 192.168.10.100 (Source) sends an Echo Request to 192.168.10.10 (Destination).  
+- 192.168.10.10 returns an Echo Reply.  
+- Wireshark associates each request with its corresponding reply in the Info column. 
+- Request/reply pairs demonstrate successful IP connectivity.  
+
+Selecting an individual packet allows additional information to be examined in the Packet Details pane, including the IPv4 source and destination addresses and ICMP protocol information.
+
 ## 4. DNS — Name Resolution
 
 ### 4.1 Generate a DNS Query
+
+To generate DNS traffic, we are using this command  `nslookup vanec1-w2022`. We are trying to resolve the IP address of the Entra ID synchronization server from the Wireshark client.
 
 ![](../images/wireshark/nslookup.png)  
 
 ### 4.2 Apply the DNS Display Filter
 
+As shown in the screenshot near the top left-hand corner, we applied the `dns` filter.
+
 ![](../images/wireshark/nslookup-in-wireshark.png)  
 
 ### 4.3 Analyze the Query and Response
+
+The `dns` display filter isolates DNS traffic in the capture.
+
+Packets 18 and 19 show a successful DNS lookup between the Windows 11 client (192.168.10.100) and the DNS server (192.168.10.10).  
+- Packet 18: The client sends an A record query for vanec1-w2022.tntechdemo01.com.  
+- Packet 19: The DNS server responds with the IPv4 address 192.168.10.11.  
+- The exchange demonstrates successful hostname-to-IPv4 address resolution using the lab DNS server.  
+- The packet details also show that the DNS query is being sent using UDP destination port 53.  
+- Additional DNS traffic may appear in the capture because the client can perform other DNS queries during the same period, including reverse lookups and IPv6 (AAAA) queries.  
 
 ## 5. DHCP — Address Configuration
 
