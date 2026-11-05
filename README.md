@@ -98,9 +98,9 @@ The **OSI (Open Systems Interconnection) model** provides a conceptual framework
     netsh-examples.md
     dhcp-ipconfig.md
 
-04-packet-analysis/            -- In development
-    wireshark-basics.md        -- TBA
-    reading-packets.md         -- TBA
+04-packet-analysis/            
+    wireshark-basics.md        
+    reading-packets.md         
 
 05-troubleshooting-workflow/
     layered-troubleshooting.md
