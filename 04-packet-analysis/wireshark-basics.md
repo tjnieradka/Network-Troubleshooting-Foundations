@@ -162,3 +162,5 @@ The Wireshark capture window is divided into three main areas:
 
 Selecting a packet in the Packet List allows its protocol information to be
 examined in the Packet Details and Packet Bytes panes.
+
+![](../images/wireshark/ping-in-wireshark.png)  
