@@ -33,31 +33,70 @@ Display filters were applied after capture rather than capture filters so that t
 ## 3. ICMP — Echo Request and Reply
 
 ### 3.1 Generate ICMP Traffic
+
+![](../images/wireshark/ping.png)  
+
 ### 3.2 Apply the ICMP Display Filter
+
+![](../images/wireshark/ping-in-wireshark.png)  
+
 ### 3.3 Analyze the Packets
 
 ## 4. DNS — Name Resolution
 
 ### 4.1 Generate a DNS Query
+
+![](../images/wireshark/nslookup.png)  
+
 ### 4.2 Apply the DNS Display Filter
+
+![](../images/wireshark/nslookup-in-wireshark.png)  
+
 ### 4.3 Analyze the Query and Response
 
 ## 5. DHCP — Address Configuration
 
 ### 5.1 Generate DHCP Traffic
+
+![](../images/wireshark/dhcp.png)  
+
 ### 5.2 Apply the DHCP Display Filter
+
+![](../images/wireshark/dhcp-discover.png)  
+
+![](../images/wireshark/dhcp-offer.png)  
+
+![](../images/wireshark/dhcp-request.png)  
+
+![](../images/wireshark/dhcp-acknowledge.png)  
+
 ### 5.3 Analyze the DHCP Exchange
 
 ## 6. TCP — Connection Establishment
 
 ### 6.1 Generate TCP Traffic
+![](../images/wireshark/tcp.png)  
+
 ### 6.2 Apply the TCP Display Filter
+
+![](../images/wireshark/tcp-get-2.png)  
+
+![](../images/wireshark/tcp-http-2.png)  
+
 ### 6.3 Analyze the TCP Three-Way Handshake
 
 ## 7. ARP — Address Resolution
 
 ### 7.1 Generate ARP Traffic
+
+![](../images/wireshark/arp.png) 
+
 ### 7.2 Apply the ARP Display Filter
+
+![](../images/wireshark/arp-broadcast-in-wireshark.png) 
+
+![](../images/wireshark/arp-reply-in-wireshark.png) 
+
 ### 7.3 Analyze the ARP Request and Reply
 
 ## 8. Summary
