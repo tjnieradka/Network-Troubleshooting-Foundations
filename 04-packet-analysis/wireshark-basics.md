@@ -1,5 +1,3 @@
-## Work in progress...
-
 # Wireshark Basics
 
 ## Overview
@@ -152,41 +150,15 @@ Examples:
 
 For general troubleshooting, it is often useful to capture normally and then use **display filters** to narrow the results.
 
----
+## Wireshark Packet Views
 
-# Practical Examples
+The Wireshark capture window is divided into three main areas:
 
-## Example 1: Analyze Ping Traffic
+- **Packet List** — Displays captured packets with summary information such as
+  source, destination, protocol, length, and packet information.
+- **Packet Details** — Displays the protocol layers and fields contained within
+  the selected packet.
+- **Packet Bytes** — Displays the raw packet data in hexadecimal and ASCII.
 
-Start a Wireshark capture and run:
-
-```
-ping 192.168.10.10
-```
-
-Apply the following display filter:
-
-```
-icmp
-```
-
-A successful ping should show pairs of:
-
-* ICMP Echo Request packets
-* ICMP Echo Reply packets
-
-This confirms that ICMP traffic is successfully travelling between the systems.
-
-If requests are visible but replies are not received, the problem may involve routing, filtering, firewall rules, or the remote system.
-
-![](../images/wireshark/ICMP.png) 
-
-![](../images/wireshark/ICMP-detail.png) 
-
-
-
-
-
-
-
-
+Selecting a packet in the Packet List allows its protocol information to be
+examined in the Packet Details and Packet Bytes panes.
